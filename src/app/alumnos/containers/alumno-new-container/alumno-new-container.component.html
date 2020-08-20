@@ -1,0 +1,322 @@
+<div class="new-alumno-container">
+    <div>
+        <span class="modal-title">Agregar Nuevo Alumno</span>
+    </div>
+   <mat-divider></mat-divider>
+
+    <div>
+        <form [formGroup]="alumnoForm" (ngSubmit)="onAdd()">
+            <div class="controls">
+                <div>
+                    <span class="modal-title">Datos Del Alumno</span>
+                </div>
+               <mat-divider></mat-divider>
+              
+              
+              
+               <div class="row">
+
+                   <div class="col-lg-4">
+                    <div class="alumno-code-container">
+                        <mat-form-field class="alumno-code arregloW">
+                           <input matInput placeholder="CURP" formControlName="curpAlumno">
+                        </mat-form-field>
+                    </div>
+    
+                    <div class="alumno-name-container">
+                        <mat-form-field class="alumno-name arregloW">
+                           <input matInput placeholder="Nombre" formControlName="nombreAlumno">
+                        </mat-form-field>
+                       
+                    </div>
+                    <div class="alumno-lname-container">
+                        <mat-form-field class="alumno-apellido arregloW">
+                            <input matInput placeholder="Apellido" formControlName="apellidoAlumno">
+                         </mat-form-field>
+                    </div>
+    
+                    <div class="alumno-grado-container">
+                        
+                        <mat-form-field class="grado arregloW">
+                            <mat-label>Selecciona Grado</mat-label>
+                            <mat-select formControlName="grado">
+
+                                <mat-option *ngFor="let grado of gradoKey" [value]="grado.key">{{grado.value}}
+
+                                </mat-option>
+
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                   </div>
+
+                   <div class="col-lg-4">
+                    <div class="alumno-grupo-container">
+                        <mat-form-field class="grupo arregloW">
+                            <mat-label>Selecciona Grupo</mat-label>
+                            <mat-select formControlName="grupo">
+
+                                <mat-option *ngFor="let grupo of grupoKey" [value]="grupo.key">{{grupo.value}}
+                                    
+                                </mat-option>
+
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+           
+
+                    <div class="alumno-fecha-container" >
+                        <mat-form-field class="alumno-fecha arregloW">
+
+<input matInput type="date" id="cumple" [(ngModel)]="ageAlumno" (ngModelChange)="edadCalculator()" name="trip-start"
+     
+       min="1990-01-01" max="2025-12-31" formControlName="fechaNacimiento">
+                        </mat-form-field>
+                    </div>
+    
+                    <!-- <div class="alumno-fecha-container">
+                        <mat-form-field class="alumno-fecha">
+                            <input matInput placeholder="Fecha de nacimiento" formControlName="fechaNacimiento">
+                         </mat-form-field>
+                    </div> -->
+    
+                    <div class="alumno-sexo-container">
+                        <mat-form-field class="sexo arregloW">
+                            <mat-label>Selecciona Sexo</mat-label>
+                            <mat-select formControlName="sexo">
+
+                                <mat-option *ngFor="let sexo of sexoKey" [value]="sexo.key">{{sexo.value}}
+                                    
+                                </mat-option>
+
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+    
+                    <div class="alumno-edad-container">
+                        <mat-form-field class="alumno-edad arregloW">
+                            <input matInput placeholder="Edad"  value="{{showAgeAlumno}}" name="age" id="age" formControlName="edad">
+                         </mat-form-field>
+                    </div>
+                   </div>
+
+                   <div class="col-lg-4">
+                    <div class="alumno-sangre-container">
+                        <mat-form-field class="alumno-sangre arregloW">
+                            <input matInput placeholder="Tipo De Sangre" formControlName="tipoSangre">
+                         </mat-form-field>
+                    </div>
+
+
+                    <div class="alumno-lugar-container">
+                        <mat-form-field class="alumno-lugar arregloW">
+                            <input matInput placeholder="Lugar De Nacimiento" formControlName="lugarNacimiento">
+                         </mat-form-field>
+                    </div>
+            
+                            <div class="alumno-telefono-container">
+                                <mat-form-field class="alumno-telefono arregloW">
+                                    <input matInput placeholder="Telefono" formControlName="telefonoAlumno">
+                                 </mat-form-field>
+                            </div>
+            
+                            <div class="alumno-correo-container">
+                                <mat-form-field class="alumno-correo arregloW">
+                                    <input matInput placeholder="Correo" formControlName="correo">
+                                 </mat-form-field>
+                            </div>
+                   </div>
+                
+                </div>
+                <div>
+                    <span class="modal-title">Datos Del Padre</span>
+                </div>
+               <mat-divider></mat-divider>
+                <div class="row">
+
+                    <div class="col-4">
+                        <div class="alumno-nombrep-container">
+                            <mat-form-field class="alumno-nombrep arregloW">
+                                <input matInput placeholder="Nombre" formControlName="nombrePadre">
+                             </mat-form-field>
+                        </div>
+        
+                        <div class="alumno-tutorp-container">
+                            <mat-form-field class="tutorPadre arregloW">
+                                <mat-label>¿Es Tutor?</mat-label>
+                                <mat-select formControlName="tutorPadre">
+    
+                                    <mat-option *ngFor="let tutor of tutorKey" [value]="tutor.key">{{tutor.value}}
+                                        
+                                    </mat-option>
+    
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+        
+                        <div class="alumno-curpp-container">
+                            <mat-form-field class="alumno-curpp arregloW">
+                                <input matInput placeholder="CURP" formControlName="curpPadre">
+                             </mat-form-field>
+                        </div>
+        
+                    </div>
+
+                    <div class="col-4">
+
+                        <div class="alumno-nap-container" >
+                            <mat-form-field class="alumno-fPadre arregloW">
+
+                            <input matInput type="date" id="start" name="trip-start"
+                                 [(ngModel)]="agePadre" (ngModelChange)="edadCalculatorPadre()"
+                                   min="1970-01-01" max="2025-12-31" formControlName="fechaNacimientoPadre">
+                            </mat-form-field>
+                    </div>
+                        <!-- <div class="alumno-nap-container">
+                            <mat-form-field class="alumno-nap">
+                                <input matInput placeholder="Fecha de nacimiento padre" formControlName="fechaNacimientoPadre">
+                             </mat-form-field>
+                        </div> -->
+
+        <div class="alumno-edadPadre-container">
+            <mat-form-field class="alumno-edadPadre arregloW">
+                <input matInput placeholder="Edad" value="{{showAgePadre}}"formControlName="edadPadre">
+             </mat-form-field>
+        </div>
+
+        <div class="alumno-inePadre-container">
+            <mat-form-field class="alumno-inePadre arregloW">
+                <input matInput placeholder="INE" formControlName="inePadre">
+             </mat-form-field>
+        </div>
+
+                    </div>
+                    <div class="col-4">
+
+                        <div class="alumno-escolaridadPadre-container">
+                            <mat-form-field class="alumno-escolaridadPadre arregloW">
+                                <input matInput placeholder="Escolaridad" formControlName="escolaridadPadre">
+                             </mat-form-field>
+                        </div>
+                
+                        <div class="alumno-telefonoPadre-container">
+                            <mat-form-field class="alumno-telefonoPadre arregloW">
+                                <input matInput placeholder="Telefono" formControlName="telefonoPadre">
+                             </mat-form-field>
+                        </div>
+                    </div>
+
+                
+                
+                </div>
+
+                <div>
+                    <span class="modal-title">Datos De La Madre</span>
+                </div>
+               <mat-divider></mat-divider>
+
+                <div class="row">
+
+                  <div class="col-4">
+                    <div class="alumno-nombrem-container">
+                        <mat-form-field class="alumno-nombrem arregloW">
+                            <input matInput placeholder="Nombre" formControlName="nombreMadre">
+                         </mat-form-field>
+                    </div>
+    
+                    <div class="alumno-tutorM-container">
+                        <mat-form-field class="tutorMadre arregloW">
+                            <mat-label>¿Es Tutor?</mat-label>
+                            <mat-select formControlName="tutorMadre">
+
+                                <mat-option *ngFor="let tutor2 of tutorKey2" [value]="tutor2.key">{{tutor2.value}}
+                                    
+                                </mat-option>
+
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+    
+                    <div class="alumno-curpm-container">
+                        <mat-form-field class="alumno-curpm arregloW">
+                            <input matInput placeholder="CURP" formControlName="curpMadre">
+                         </mat-form-field>
+                    </div>
+                  </div>
+
+               
+
+
+                    <div class="col-4">
+
+                        <div class="alumno-nam-container" >
+                            <mat-form-field class="alumno-fMadre arregloW">
+                            
+                            <input matInput type="date" id="start" name="trip-start"
+                                     [(ngModel)]="ageMadre" (ngModelChange)="edadCalculatorMadre()"
+                                   min="1970-01-01" max="2025-12-31" formControlName="fechaNacimientoMadre">
+                                </mat-form-field>
+                       
+                            </div>
+
+                    <div class="alumno-edadMadre-container">
+                        <mat-form-field class="alumno-edadMadre arregloW">
+                            <input matInput placeholder="Edad" value="{{showAgeMadre}}" formControlName="edadMadre">
+                         </mat-form-field>
+                    </div>
+                
+                    <div class="alumno-ineMadre-container">
+                        <mat-form-field class="alumno-ineMadre arregloW">
+                            <input matInput placeholder="INE" formControlName="ineMadre">
+                         </mat-form-field>
+                    </div>
+                      
+                 </div>
+
+                <div class="col-4">
+                    <div class="alumno-escolaridadMadre-container">
+                        <mat-form-field class="alumno-escolaridadMadre arregloW">
+                            <input matInput placeholder="Escolaridad" formControlName="escolaridadMadre">
+                         </mat-form-field>
+                    </div>
+                
+                    
+                    <div class="alumno-telefonoMadre-container">
+                        <mat-form-field class="alumno-telefonoMadre arregloW">
+                            <input matInput placeholder="Telefono" formControlName="telefonoMadre">
+                         </mat-form-field>
+                    </div>
+                
+                         
+                    
+                    
+                      
+                </div>
+                 
+
+                <div class="col-12">
+
+                    <div class="alumno-domicilio-container">
+                        <mat-form-field class="alumno-domicilio">
+                            <input matInput placeholder="Domicilio" formControlName="domicilio">
+                         </mat-form-field>
+                    </div>
+                </div>
+                
+                </div>
+
+
+
+                
+            </div>
+
+            <div class="button-container" style="margin-bottom: 30px;">
+                <button mat-raised-button color="warn"  type="submit">Cancelar</button>
+                <button  mat-raised-button color="primary" [disabled]="!alumnoForm.valid" type="submit">Agregar</button>
+            </div>
+        </form>
+    </div>
+</div>

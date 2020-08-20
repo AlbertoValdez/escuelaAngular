@@ -1,0 +1,34 @@
+<div>
+    <input type="text"class="from-control" name="filterAlumno" placeholder="Buscar..."[(ngModel)]="filterAlumno">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Alumno Curp</th>
+                <th scope="col">Nombre Alumno</th>
+                <th scope="col">Apellido Alumno</th>
+                <th scope="col">Grado</th>
+                <th scope="col">Grupo</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items | filter:filterAlumno">
+                <td>{{item.curpAlumno}}</td>
+                <td>{{item.nombreAlumno}}</td>
+                <td>{{item.apellidoAlumno}}</td>
+                <td>{{item.grado}}</td>
+                <td>{{item.grupo}}</td>
+                <td>{{item.telefonoAlumno}}</td>
+                <td>{{item.correo}}</td>
+                <td>
+                    <Button (click)= "onEdit(item.id)">Ver Mas</Button>
+                    <Button (click)= "onDelete(item.id)">Eliminar</Button>
+                  
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
