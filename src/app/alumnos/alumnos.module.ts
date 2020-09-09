@@ -14,10 +14,16 @@ import { AlumnoEditContainerComponent } from './containers/alumno-edit-container
 import { AlumnoEditComponent } from './components/alumno-edit/alumno-edit.component';
 import { AlumnoNewContainerComponent } from './containers/alumno-new-container/alumno-new-container.component';
 import { FilterPipe } from './components/pipes/filter.pipe';
+import { PagoNewContainerComponent } from './containers/pago-new-container/pago-new-container.component';
+import { PagoTableListComponent } from './components/pago-table-list/pago-table-list.component';
+import { PagoEditComponent } from './components/pago-edit/pago-edit.component';
+import { PagoEditContainerComponent } from './containers/pago-edit-container/pago-edit-container.component';
+import { PagoAddContainerComponent } from './containers/pago-add-container/pago-add-container.component';
+import { PruebasComponent } from './containers/pruebas/pruebas.component';
 
 
 @NgModule({
-  declarations: [AlumnosMainContainerComponent, AlumnosListContainerComponent, AlumnosTableListComponent, AlumnoEditContainerComponent, AlumnoEditComponent, AlumnoNewContainerComponent, FilterPipe],
+  declarations: [AlumnosMainContainerComponent, AlumnosListContainerComponent, AlumnosTableListComponent, AlumnoEditContainerComponent, AlumnoEditComponent, AlumnoNewContainerComponent, FilterPipe, PagoNewContainerComponent, PagoTableListComponent, PagoEditComponent, PagoEditContainerComponent, PagoAddContainerComponent, PruebasComponent],
   imports: [
     CommonModule,
     AlumnosRoutingModule,
@@ -25,6 +31,6 @@ import { FilterPipe } from './components/pipes/filter.pipe';
     StoreModule.forFeature('alumno', reducers),
     EffectsModule.forFeature([AlumnoEffects])
   ],
-  entryComponents:[AlumnoEditContainerComponent]
+  entryComponents:[AlumnoEditContainerComponent,PagoEditContainerComponent]
 })
 export class AlumnosModule { }

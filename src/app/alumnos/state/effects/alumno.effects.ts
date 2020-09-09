@@ -4,6 +4,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import * as alumnosActions from '../actions/alumno.action';
 import {switchMap, map} from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Pago } from '../../models/pago';
 
 @Injectable()
 export class AlumnoEffects{
@@ -64,6 +65,61 @@ export class AlumnoEffects{
                        ))
                    ); 
                 
+
+                   @Effect()
+                   LoadPago$ = this.actions$.pipe(
+                       ofType<alumnosActions.LoadPago>(alumnosActions.AlumnoActionTypes.LoadPago),
+                       switchMap(action=> this.alumnoService.GetPagos(action.request).pipe(
+                           map(data=> new alumnosActions.LoadPagoComplete(data))
+                       ))
+                   );
+
+                   @Effect()
+                   GetPago$ = this.actions$.pipe(
+                       ofType<alumnosActions.GetPagoByID>(alumnosActions.AlumnoActionTypes.GetPagoByID),
+                       switchMap(action => this.alumnoService.GetPago(action.PagoId)
+                       .pipe( map(data => new alumnosActions.GetPagoByIDComplete(data))
+                       ))
+                   );
+
+
+                   @Effect()
+                   UpdatePago$ = this.actions$.pipe(
+                       ofType<alumnosActions.UpdatePago>(alumnosActions.AlumnoActionTypes.UpdatePago),
+                       switchMap(action=>this.alumnoService.UpdatePago(action.request)
+                       .pipe(
+                           map(_ => {
+                            this.route.navigate(['/alumnos/pagos'])
+
+                            return new alumnosActions.UpdatePagoComplete()
+
+                           } 
+                       )))
+                   );
+
+                   @Effect()
+                   DeletePago = this.actions$.pipe(
+                       ofType<alumnosActions.DeletePago>(alumnosActions.AlumnoActionTypes.DeletePago),
+                       switchMap(action=>this.alumnoService.DeletePago(action.pagoID)
+                       .pipe(
+                           map(_=>{
+                               this.route.navigate(['/alumnos/pagos'])
+                               return new alumnosActions.DeletePagoComplete()
+                           })
+                       ))
+                   );
+
+                   @Effect()
+                   AddPago = this.actions$.pipe(
+                       ofType<alumnosActions.AddPago>(alumnosActions.AlumnoActionTypes.AddPago),
+                       switchMap(action=>this.alumnoService.AddPago(action.request).pipe(
+                           map(_=>{
+                               this.route.navigate(['alumnos/pagos'])
+                               return new alumnosActions.AddPagoComplete()
+                           })
+                       ))
+                   )
+
 
 
 }

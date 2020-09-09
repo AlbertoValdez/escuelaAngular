@@ -1,0 +1,66 @@
+<div>
+
+    <div>
+        Pago
+    </div>
+
+    <div>
+        <form [formGroup]="pagoEditForm"  (ngSubmit)="onEdit()" >
+
+            <div class="row">
+
+                <div class="nombre-container">
+            <label>Nombre</label> <br>
+                    <mat-form-field>
+                        <input matInput placeholder="" formControlName="nombre">
+                    </mat-form-field>
+                
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="concepto-container">
+            <label >Concepto de pago</label> <br>
+                    <mat-form-field>
+                        <input matInput placeholder="" formControlName="concepto">
+                    </mat-form-field>
+                
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="abonado-container">
+            <label>Pago Abonado</label> <br>
+                    <mat-form-field>
+                        <input matInput placeholder="" formControlName="abonado">
+                    </mat-form-field>
+                
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="estado-container">
+            <label >Estado del pago</label> <br>
+                    <mat-form-field>
+                        <input matInput placeholder="" formControlName="estado">
+                    </mat-form-field>
+                
+                </div>
+            </div>
+                
+
+
+          <div class="row">
+            <div class="button-container">
+                <button [disabled]="!pagoEditForm.valid" type="submit">Editar</button>
+                <button mat-dialog-close>Cancelar </button> 
+            </div>
+          </div>
+            
+          
+
+        </form>
+    </div>
+
+</div>

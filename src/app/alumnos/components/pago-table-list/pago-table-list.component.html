@@ -1,0 +1,23 @@
+<div>
+    <table class="table table-striped">
+        <thead  class="thead-light ">
+            <th scope="col">Nombre</th>
+            <th scope="col">Concepto</th>
+            <th scope="col">Abonado</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>{{item.nombre}}</td>
+                <td>{{item.concepto}}</td>
+                <td>{{item.abonado}}</td>
+                <td>{{item.estado}}</td>
+                <td>
+                    <button  mat-raised-button  (click)="onEdit(item.id)">Ver Más</button>
+                    <button   mat-raised-button color="warn"  (click)="onDelete(item.id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

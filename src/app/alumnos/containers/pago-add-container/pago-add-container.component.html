@@ -1,0 +1,36 @@
+
+
+<div class="row">
+    <h3>Formulario de registro de pagos</h3>
+</div>
+<mat-divider></mat-divider>
+
+<div >
+    <form [formGroup]="pagoForm" (ngSubmit)="onAdd()">
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field>
+                    <input  class="w-es"  matInput placeholder="Nombre" formControlName="nombre">
+                </mat-form-field>
+                <mat-form-field>
+                    <input  class="w-es" matInput placeholder="Concepto" formControlName="concepto">
+                </mat-form-field>
+            </div>
+           
+            <div class="col-6">
+                <mat-form-field>
+                    <input  class="w-es" matInput placeholder="Abonado" formControlName="abonado">
+                </mat-form-field>
+                <mat-form-field>
+                    <input class="w-es"  matInput placeholder="Estado" formControlName="estado">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="button_con">
+                <button  mat-raised-button color="primary" [disabled]="!pagoForm.valid" type="submit"  >Agregar</button>
+          
+            </div>
+        </div>
+    </form>
+</div>

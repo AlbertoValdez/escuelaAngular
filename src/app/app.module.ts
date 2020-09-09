@@ -14,6 +14,7 @@ import { AlumnosModule } from './alumnos/alumnos.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+
 import {FormsModule} from '@angular/forms';
 @NgModule({
   declarations: [

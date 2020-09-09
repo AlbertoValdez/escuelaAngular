@@ -1,6 +1,12 @@
 <div>
-    <input type="text"class="from-control" name="filterAlumno" placeholder="Buscar..."[(ngModel)]="filterAlumno">
-    <table class="table">
+    <nav  class="navbar navbar-light bg-light">
+
+    
+    <form class="form-inline">
+        <input  type="text"class="from-control" name="filterAlumno" placeholder="Buscar..."[(ngModel)]="filterAlumno">
+    </form>
+</nav>
+    <table class="table table-striped">
         <thead class="thead-light">
             <tr>
                 <th scope="col">Alumno Curp</th>
@@ -23,8 +29,8 @@
                 <td>{{item.telefonoAlumno}}</td>
                 <td>{{item.correo}}</td>
                 <td>
-                    <Button (click)= "onEdit(item.id)">Ver Mas</Button>
-                    <Button (click)= "onDelete(item.id)">Eliminar</Button>
+                    <button mat-raised-button  (click)= "onEdit(item.id)">Ver Mas</button>
+                    <button mat-raised-button color="warn"  (click)= "onDelete(item.id)">Eliminar</button>
                   
                 </td>
 
